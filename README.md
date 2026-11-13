@@ -1,8 +1,9 @@
 # date-calculator
 
+**Live site:** [https://date-calculator-2j5.pages.dev](https://date-calculator-2j5.pages.dev)
+
 Free, ad-free date, age, and business-day calculator.
 
-**Live site:** https://date-calculator-2j5.pages.dev/
 
 ## Tools
 

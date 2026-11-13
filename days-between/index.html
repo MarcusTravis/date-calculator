@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Days Between Two Dates Calculator – Count Days, Weeks & Months</title>
+<meta name="description" content="Count the days between two dates. See total days, weeks and days, and years, months, and days, with an option to include the end date. Free, no ads.">
+<link rel="canonical" href="https://date-calculator-2j5.pages.dev/days-between/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Date Calculator">
+<meta property="og:title" content="Days Between Two Dates Calculator – Count Days, Weeks & Months">
+<meta property="og:description" content="Count the days between two dates. See total days, weeks and days, and years, months, and days, with an option to include the end date. Free, no ads.">
+<meta property="og:url" content="https://date-calculator-2j5.pages.dev/days-between/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/datecore.js" defer></script>
+<script src="/js/ui.js" defer></script>
+<script src="/js/pages/days-between.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="6" width="26" height="23" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 13h26M10 3v6M22 3v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 20l4 4 8-8" fill="none" stroke="#0d9c86" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Date Calculator</span></a>
+<nav class="site-nav" aria-label="Calculators"><ul><li><a href="/days-between/" aria-current="page">Days between</a></li><li><a href="/add-subtract/">Add / subtract</a></li><li><a href="/age/">Age</a></li><li><a href="/business-days/">Business days</a></li><li><a href="/federal-holidays/">Holidays</a></li><li><a href="/countdown/">Countdown</a></li><li><a href="/about/">About</a></li></ul></nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<h1>Days between two dates</h1>
+<p class="lede">Pick a start and an end date to see how far apart they are.</p>
+<form id="form" class="card" novalidate>
+<div class="row">
+<div class="field"><label for="start">Start date</label><input type="date" id="start" name="start" required min="0001-01-01" max="9999-12-31"></div>
+<div class="field"><label for="end">End date</label><input type="date" id="end" name="end" required min="0001-01-01" max="9999-12-31"></div>
+</div>
+<div class="check"><input type="checkbox" id="inclusive" name="inclusive"><label for="inclusive">Include the end date (adds one day)</label></div>
+<div class="actions"><button type="button" class="btn secondary" id="swap">Swap dates</button></div>
+<p class="error" id="error" role="alert"></p>
+</form>
+<section class="card result" id="result" aria-live="polite" hidden>
+<h2 class="visually-hidden">Result</h2>
+<p class="big" id="total"></p>
+<p class="sub" id="direction"></p>
+<ul class="stats">
+<li><span class="k">Weeks and days</span><span class="v" id="weeks"></span></li>
+<li><span class="k">Years, months, days</span><span class="v" id="ymd"></span></li>
+<li><span class="k">In months</span><span class="v" id="months"></span></li>
+<li><span class="k">In hours</span><span class="v" id="hours"></span></li>
+</ul>
+<div class="actions"><button type="button" class="btn secondary" id="copy">Copy link to this result</button><span class="note" id="copy-status" role="status" aria-live="polite"></span></div>
+</section>
+<section class="prose">
+<h2>How the count works</h2>
+<p>By default the count is the number of midnights you pass going from the start date to the end date, so Monday to Friday is 4 days. Tick <em>Include the end date</em> when both days should count, for example when working out how many days an event or a hotel stay spans, and Monday to Friday becomes 5.</p>
+<p>The years, months, and days breakdown first adds as many whole months as fit, then counts the leftover days. When a start date falls on a day that a shorter month does not have, that month ends on its last day: from January 31 to March 1 is 1 month and 1 day, because one month after January 31 is the end of February.</p>
+<p>Hours assume 24-hour days. A day that contains a daylight-saving change is really 23 or 25 hours long on the clock, but it is still one calendar day, which is what this tool counts.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap"><p>Free and ad-free. If this site helped you, <a href="https://ko-fi.com/marcustravis" rel="noopener" target="_blank">buy me a coffee →</a></p></div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "665539911fd54c88980aae41dd509ef1"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

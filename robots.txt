@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://date-calculator-2j5.pages.dev/sitemap.xml

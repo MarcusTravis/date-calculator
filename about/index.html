@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About the Date Calculator – Methods and Sources</title>
+<meta name="description" content="How this free, ad-free date calculator works: calendar arithmetic, month-end rules, time zones from the browser's IANA database, and OPM federal holiday rules.">
+<link rel="canonical" href="https://date-calculator-2j5.pages.dev/about/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Date Calculator">
+<meta property="og:title" content="About the Date Calculator – Methods and Sources">
+<meta property="og:description" content="How this free, ad-free date calculator works: calendar arithmetic, month-end rules, time zones from the browser's IANA database, and OPM federal holiday rules.">
+<meta property="og:url" content="https://date-calculator-2j5.pages.dev/about/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="6" width="26" height="23" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 13h26M10 3v6M22 3v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 20l4 4 8-8" fill="none" stroke="#0d9c86" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Date Calculator</span></a>
+<nav class="site-nav" aria-label="Calculators"><ul><li><a href="/days-between/">Days between</a></li><li><a href="/add-subtract/">Add / subtract</a></li><li><a href="/age/">Age</a></li><li><a href="/business-days/">Business days</a></li><li><a href="/federal-holidays/">Holidays</a></li><li><a href="/countdown/">Countdown</a></li><li><a href="/about/" aria-current="page">About</a></li></ul></nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<h1>About this site</h1>
+<p class="lede">A small set of date tools that are free to use, have no ads, and do not track you.</p>
+<div class="prose">
+<h2>Privacy</h2>
+<p>Every calculation runs in your browser. Nothing you type is sent anywhere, and the site sets no cookies. Inputs are kept in the page address only so a result can be bookmarked or shared. The site uses Cloudflare Web Analytics, which counts page views without cookies or cross-site tracking.</p>
+
+<h2>Calendar arithmetic</h2>
+<p>Dates are handled as plain year, month, and day values on the proleptic Gregorian calendar (the calendar in use today, extended backward). Each date is converted to a whole day number, so subtracting two dates or adding days is exact integer math. No step uses clock time, which means daylight-saving changes and time zones cannot cause off-by-one errors in date results.</p>
+<ul>
+<li><strong>Leap years:</strong> years divisible by 4 are leap years, except century years, which are leap years only when divisible by 400. So 2000 was a leap year and 2100 will not be.</li>
+<li><strong>Adding months and years:</strong> the day number stays the same when the target month has it; otherwise the result is the last day of that month (January 31 + 1 month = February 28 or 29).</li>
+<li><strong>Years, months, and days between dates:</strong> the largest number of whole months that fits is counted first using the same month rule, then the remaining days. Adding the result back to the start date always returns the end date.</li>
+<li><strong>Leap-day birthdays:</strong> in common years a February 29 birthday is counted on February 28.</li>
+</ul>
+
+<h2>Time zones</h2>
+<p>The countdown converts times using the IANA time zone database (often called tzdb or the Olson database) as shipped in your browser through the standard <code>Intl</code> API. The list of zones comes from your browser too, with a short built-in list as a fallback for older browsers. Because the data belongs to the browser, it updates when the browser does.</p>
+
+<h2>U.S. federal holidays</h2>
+<p>Holidays are computed from the rules in 5 U.S.C. 6103, the federal law that names the legal public holidays, and the observance rules the U.S. Office of Personnel Management (OPM) publishes for federal employees:</p>
+<ul>
+<li>New Year's Day (January 1), Juneteenth National Independence Day (June 19, from 2021), Independence Day (July 4), Veterans Day (November 11), and Christmas Day (December 25) have fixed dates.</li>
+<li>Birthday of Martin Luther King, Jr. (third Monday in January, from 1986), Washington's Birthday (third Monday in February), Memorial Day (last Monday in May), Labor Day (first Monday in September), Columbus Day (second Monday in October), and Thanksgiving Day (fourth Thursday in November) fall on set weekdays.</li>
+<li>A holiday on a Saturday is observed the Friday before; one on a Sunday is observed the Monday after.</li>
+<li>Years before 1971 are not supported, because the current Monday-holiday rules began that year. From 1971 to 1977 Veterans Day was the fourth Monday in October, and the calculator follows that.</li>
+</ul>
+<p>Holiday dates are calculated each time rather than copied from a table, so they work for any year. Laws can change; if Congress adds or moves a holiday, this site will need an update.</p>
+
+<h2>Testing</h2>
+<p>The calculation code has an automated test suite covering leap years, month-end dates, daylight-saving transitions in several zones, observed holidays (such as July 4, 2026, a Saturday, observed on Friday, July 3), and Juneteenth before and after 2021.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>5 U.S.C. 6103, Holidays (United States Code).</li>
+<li>U.S. Office of Personnel Management, federal holidays and observance guidance (opm.gov).</li>
+<li>IANA Time Zone Database (iana.org/time-zones), accessed through the browser's <code>Intl.DateTimeFormat</code>.</li>
+</ul>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap"><p>Free and ad-free. If this site helped you, <a href="https://ko-fi.com/marcustravis" rel="noopener" target="_blank">buy me a coffee →</a></p></div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "665539911fd54c88980aae41dd509ef1"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Days Calculator – Count or Add Workdays, Skip Federal Holidays</title>
+<meta name="description" content="Count business days between two dates or add and subtract workdays, skipping weekends and, optionally, U.S. federal holidays on their observed dates.">
+<link rel="canonical" href="https://date-calculator-2j5.pages.dev/business-days/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Date Calculator">
+<meta property="og:title" content="Business Days Calculator – Count or Add Workdays, Skip Federal Holidays">
+<meta property="og:description" content="Count business days between two dates or add and subtract workdays, skipping weekends and, optionally, U.S. federal holidays on their observed dates.">
+<meta property="og:url" content="https://date-calculator-2j5.pages.dev/business-days/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/datecore.js" defer></script>
+<script src="/js/ui.js" defer></script>
+<script src="/js/pages/business-days.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="6" width="26" height="23" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 13h26M10 3v6M22 3v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 20l4 4 8-8" fill="none" stroke="#0d9c86" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Date Calculator</span></a>
+<nav class="site-nav" aria-label="Calculators"><ul><li><a href="/days-between/">Days between</a></li><li><a href="/add-subtract/">Add / subtract</a></li><li><a href="/age/">Age</a></li><li><a href="/business-days/" aria-current="page">Business days</a></li><li><a href="/federal-holidays/">Holidays</a></li><li><a href="/countdown/">Countdown</a></li><li><a href="/about/">About</a></li></ul></nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<h1>Business days calculator</h1>
+<p class="lede">Weekends are always skipped. U.S. federal holidays are skipped on their observed dates unless you turn that off.</p>
+<form id="form" class="card" novalidate>
+<fieldset class="field"><legend>What do you want to do?</legend>
+<div class="segmented">
+<label><input type="radio" name="mode" id="mode-count" value="count"><span>Count between dates</span></label>
+<label><input type="radio" name="mode" id="mode-add" value="add"><span>Add or subtract business days</span></label>
+</div></fieldset>
+<div class="row" style="margin-top:.9rem">
+<div class="field"><label for="start">Start date</label><input type="date" id="start" name="start" required min="1971-01-01" max="9999-12-31"></div>
+<div class="field" id="count-fields"><label for="end">End date</label><input type="date" id="end" name="end" min="1971-01-01" max="9999-12-31"></div>
+<div class="field" id="add-fields" hidden><label for="n">Business days</label><input type="number" id="n" name="n" step="1" min="-100000" max="100000" inputmode="numeric"><span class="hint">Use a negative number to go back</span></div>
+</div>
+<div class="check"><input type="checkbox" id="holidays" name="holidays"><label for="holidays">Skip U.S. federal holidays (observed dates)</label></div>
+<div class="check" id="incstart-row"><input type="checkbox" id="incstart" name="incstart"><label for="incstart">Count the start date too</label></div>
+<p class="error" id="error" role="alert"></p>
+</form>
+<section class="card result" id="result" aria-live="polite" hidden>
+<h2 class="visually-hidden">Result</h2>
+<p class="big" id="big"></p>
+<p class="sub" id="sub"></p>
+<h3 id="skipped-head"></h3>
+<ul id="skipped"></ul>
+<div class="actions"><button type="button" class="btn secondary" id="copy">Copy link to this result</button><span class="note" id="copy-status" role="status" aria-live="polite"></span></div>
+</section>
+<section class="prose">
+<h2>Rules used</h2>
+<ul>
+<li><strong>Counting</strong> includes the end date and leaves out the start date, so Monday to the following Monday is 5 business days. Tick the start-date box to count both ends.</li>
+<li><strong>Adding</strong> starts the next business day after the start date: 1 business day after a Friday is the following Monday. Adding 0 returns the start date.</li>
+<li><strong>Holidays</strong> are the eleven U.S. federal holidays from <a href="/federal-holidays/">this list</a>. When one falls on a Saturday, the Friday before is skipped; when it falls on a Sunday, the Monday after is skipped. That is how federal offices and many employers observe them.</li>
+<li>Bank, stock market, state, and company holidays can differ from the federal list. Turn holidays off to count weekdays only.</li>
+</ul>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap"><p>Free and ad-free. If this site helped you, <a href="https://ko-fi.com/marcustravis" rel="noopener" target="_blank">buy me a coffee →</a></p></div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "665539911fd54c88980aae41dd509ef1"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

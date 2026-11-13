@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Countdown Timer to Any Date and Time, in Any Time Zone</title>
+<meta name="description" content="Live countdown in days, hours, minutes, and seconds to any date and time in any time zone. Daylight-saving aware and shareable by link. Free, no ads.">
+<link rel="canonical" href="https://date-calculator-2j5.pages.dev/countdown/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Date Calculator">
+<meta property="og:title" content="Countdown Timer to Any Date and Time, in Any Time Zone">
+<meta property="og:description" content="Live countdown in days, hours, minutes, and seconds to any date and time in any time zone. Daylight-saving aware and shareable by link. Free, no ads.">
+<meta property="og:url" content="https://date-calculator-2j5.pages.dev/countdown/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/datecore.js" defer></script>
+<script src="/js/ui.js" defer></script>
+<script src="/js/pages/countdown.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="6" width="26" height="23" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 13h26M10 3v6M22 3v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 20l4 4 8-8" fill="none" stroke="#0d9c86" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Date Calculator</span></a>
+<nav class="site-nav" aria-label="Calculators"><ul><li><a href="/days-between/">Days between</a></li><li><a href="/add-subtract/">Add / subtract</a></li><li><a href="/age/">Age</a></li><li><a href="/business-days/">Business days</a></li><li><a href="/federal-holidays/">Holidays</a></li><li><a href="/countdown/" aria-current="page">Countdown</a></li><li><a href="/about/">About</a></li></ul></nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<h1>Countdown to a date and time</h1>
+<p class="lede">Set a moment, pick the time zone it happens in, and share the link. Anyone who opens it sees the same countdown, converted to their own clock.</p>
+<form id="form" class="card" novalidate>
+<div class="row">
+<div class="field"><label for="title">Event name (optional)</label><input type="text" id="title" name="title" maxlength="80" autocomplete="off" placeholder="e.g. Launch day"></div>
+</div>
+<div class="row" style="margin-top:.9rem">
+<div class="field"><label for="date">Date</label><input type="date" id="date" name="date" required min="0001-01-01" max="9999-12-31"></div>
+<div class="field"><label for="time">Time</label><input type="time" id="time" name="time" required step="60"></div>
+<div class="field"><label for="tz">Time zone</label><select id="tz" name="tz"></select></div>
+</div>
+<div class="actions"><button type="button" class="btn secondary" id="use-local">Use my time zone (<span id="local-zone"></span>)</button></div>
+<p class="error" id="error" role="alert"></p>
+</form>
+<section class="card result" id="result" hidden>
+<h2 id="cd-heading">Countdown</h2>
+<p class="sub" id="cd-state"></p>
+<div class="countdown" aria-hidden="true">
+<div><span class="n" id="cd-days">0</span><span class="u">Days</span></div>
+<div><span class="n" id="cd-hours">00</span><span class="u">Hours</span></div>
+<div><span class="n" id="cd-minutes">00</span><span class="u">Minutes</span></div>
+<div><span class="n" id="cd-seconds">00</span><span class="u">Seconds</span></div>
+</div>
+<p class="visually-hidden" id="cd-live" aria-live="polite"></p>
+<p style="margin-top:1rem"><strong>Target:</strong> <span id="target-zone"></span></p>
+<p class="note" id="target-local"></p>
+<p class="note" id="dst-note"></p>
+<div class="actions"><button type="button" class="btn secondary" id="copy">Copy link to this result</button><span class="note" id="copy-status" role="status" aria-live="polite"></span></div>
+</section>
+<section class="prose">
+<h2>How the countdown stays accurate</h2>
+<p>The date and time you enter are read as a wall-clock time in the chosen zone, then converted to one exact moment using the time zone database built into your browser. That database knows when each place switches to or from daylight saving time, so a countdown that crosses a clock change is still exact, even if your own zone changes on a different day.</p>
+<p>If you pick a time that happens twice because clocks fall back, the first occurrence is used. If you pick a time that is skipped when clocks spring forward, the countdown uses the moment the clocks jump past it, and a note says so.</p>
+<p>The countdown follows your device clock. If that clock is wrong, the countdown will be off by the same amount.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap"><p>Free and ad-free. If this site helped you, <a href="https://ko-fi.com/marcustravis" rel="noopener" target="_blank">buy me a coffee →</a></p></div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "665539911fd54c88980aae41dd509ef1"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

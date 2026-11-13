@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Age Calculator – Exact Age in Years, Months & Days</title>
+<meta name="description" content="Calculate exact age in years, months, and days, total months, weeks, and days lived, and the countdown to the next birthday. Clear leap-day rule. No ads.">
+<link rel="canonical" href="https://date-calculator-2j5.pages.dev/age/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Date Calculator">
+<meta property="og:title" content="Age Calculator – Exact Age in Years, Months & Days">
+<meta property="og:description" content="Calculate exact age in years, months, and days, total months, weeks, and days lived, and the countdown to the next birthday. Clear leap-day rule. No ads.">
+<meta property="og:url" content="https://date-calculator-2j5.pages.dev/age/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/datecore.js" defer></script>
+<script src="/js/ui.js" defer></script>
+<script src="/js/pages/age.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="/"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="6" width="26" height="23" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 13h26M10 3v6M22 3v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 20l4 4 8-8" fill="none" stroke="#0d9c86" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Date Calculator</span></a>
+<nav class="site-nav" aria-label="Calculators"><ul><li><a href="/days-between/">Days between</a></li><li><a href="/add-subtract/">Add / subtract</a></li><li><a href="/age/" aria-current="page">Age</a></li><li><a href="/business-days/">Business days</a></li><li><a href="/federal-holidays/">Holidays</a></li><li><a href="/countdown/">Countdown</a></li><li><a href="/about/">About</a></li></ul></nav>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<h1>Age calculator</h1>
+<p class="lede">Enter a date of birth. Change the second date to see the age on any other day.</p>
+<form id="form" class="card" novalidate>
+<div class="row">
+<div class="field"><label for="dob">Date of birth</label><input type="date" id="dob" name="dob" required min="0001-01-01" max="9999-12-31"></div>
+<div class="field"><label for="on">Age on</label><input type="date" id="on" name="on" required min="0001-01-01" max="9999-12-31"><span class="hint">Defaults to today</span></div>
+</div>
+<p class="error" id="error" role="alert"></p>
+</form>
+<section class="card result" id="result" aria-live="polite" hidden>
+<h2 class="visually-hidden">Result</h2>
+<p class="big" id="age"></p>
+<p class="sub" id="age-sub"></p>
+<ul class="stats">
+<li><span class="k">Total months</span><span class="v" id="t-months"></span></li>
+<li><span class="k">Total weeks</span><span class="v" id="t-weeks"></span></li>
+<li><span class="k">Total days</span><span class="v" id="t-days"></span></li>
+<li><span class="k">Total hours</span><span class="v" id="t-hours"></span></li>
+</ul>
+<p id="next" style="margin-top:1rem;font-weight:600"></p>
+<p class="note" id="leap"></p>
+<div class="actions"><button type="button" class="btn secondary" id="copy">Copy link to this result</button><span class="note" id="copy-status" role="status" aria-live="polite"></span></div>
+</section>
+<section class="prose">
+<h2>How age is calculated</h2>
+<p>Age counts the full years since birth, then the full months after the last birthday, then the remaining days. A person born on March 10 is one month older on April 10 and one year older on the next March 10, the way people usually count.</p>
+<p>When the birth day number does not exist in a month (for example, the 31st), that month's step lands on the month's last day, the same rule the <a href="/add-subtract/">add and subtract</a> tool uses.</p>
+<h3 id="leap-day">Birthdays on February 29</h3>
+<p>In years without a February 29, this calculator treats February 28 as the birthday, so someone born on February 29, 2000 turns 26 on February 28, 2026. Some laws and organizations use March 1 instead. If that matters for your purpose, check the rule that applies to you; the difference is never more than one day.</p>
+<p>Total hours assume 24-hour days and are approximate, since the hour of birth is not known.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap"><p>Free and ad-free. If this site helped you, <a href="https://ko-fi.com/marcustravis" rel="noopener" target="_blank">buy me a coffee →</a></p></div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "665539911fd54c88980aae41dd509ef1"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,6 +1,6 @@
 # date-calculator
 
-**Live site:** [https://date-calculator-2j5.pages.dev](https://date-calculator-2j5.pages.dev)
+**Live site:** [https://dayspan.pages.dev](https://dayspan.pages.dev)
 
 Free, ad-free date, age, and business-day calculator.
 
@@ -60,7 +60,7 @@ title, a meta description, the footer, and the analytics beacon. It exits non-ze
 
 ## Deploy
 
-Hosted on Cloudflare Pages (project `date-calculator`), connected to this GitHub repository:
+Hosted on Cloudflare Pages (project `dayspan`), connected to this GitHub repository:
 
 - Production branch: `main` (every push to `main` deploys to production; other branches get preview URLs)
 - Build command: none

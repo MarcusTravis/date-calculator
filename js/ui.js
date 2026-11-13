@@ -19,7 +19,8 @@
       var v = obj[k];
       if (v !== undefined && v !== null && v !== '' && v !== false) p.set(k, v === true ? '1' : String(v));
     });
-    var qs = p.toString();
+    // '/' and ':' are legal in a query string; leaving them readable keeps shared links tidy.
+    var qs = p.toString().replace(/%2F/gi, '/').replace(/%3A/gi, ':');
     var url = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
     try { window.history.replaceState(null, '', url); } catch (e) { /* file:// or sandboxed */ }
   }

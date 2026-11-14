@@ -159,6 +159,23 @@ test('2026 holiday dates', function () {
     '2026-01-01', '2026-01-19', '2026-02-16', '2026-05-25', '2026-06-19', '2026-07-03',
     '2026-09-07', '2026-10-12', '2026-11-11', '2026-11-26', '2026-12-25']);
 });
+test('2027 holiday dates and observed days', function () {
+  eq(C.federalHolidays(2027).map(function (h) { return [h.key, iso(h.date), iso(h.observed)]; }), [
+    ['new-years', '2027-01-01', '2027-01-01'],
+    ['mlk', '2027-01-18', '2027-01-18'],
+    ['washington', '2027-02-15', '2027-02-15'],
+    ['memorial', '2027-05-31', '2027-05-31'],
+    ['juneteenth', '2027-06-19', '2027-06-18'],
+    ['independence', '2027-07-04', '2027-07-05'],
+    ['labor', '2027-09-06', '2027-09-06'],
+    ['columbus', '2027-10-11', '2027-10-11'],
+    ['veterans', '2027-11-11', '2027-11-11'],
+    ['thanksgiving', '2027-11-25', '2027-11-25'],
+    ['christmas', '2027-12-25', '2027-12-24']
+  ]);
+  eq(iso(hol(2028, 'new-years').observed), '2027-12-31');
+  eq(C.federalHolidays(2027).some(function (h) { return /inauguration/i.test(h.name + h.key); }), false);
+});
 test('2025 floating holidays', function () {
   eq(iso(hol(2025, 'mlk').date), '2025-01-20');
   eq(iso(hol(2025, 'washington').date), '2025-02-17');

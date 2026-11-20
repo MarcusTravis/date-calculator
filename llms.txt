@@ -1,0 +1,28 @@
+# Date Calculator (dayspan.pages.dev)
+
+> Free, ad-free date tools that run entirely in the browser: days between two dates, adding or subtracting days, weeks, months, and years, exact age, business days that skip weekends and U.S. federal holidays, U.S. federal holidays by year with observed dates, and a time-zone-aware countdown. No accounts, no cookies, no ads.
+
+Every result is stored in the page address, so a link reproduces the same calculation. All pages are plain HTML with the method explained in plain English on the page.
+
+## Methods
+
+- Calendar math: dates are plain year-month-day values on the proleptic Gregorian calendar, converted to whole day numbers, so daylight saving time never changes a date result. Leap years follow the Gregorian rule (divisible by 4, except centuries not divisible by 400).
+- Month arithmetic: adding months keeps the day number when the target month has it; otherwise the result is that month's last day (January 31 + 1 month = February 28, or February 29 in a leap year). February 29 birthdays fall on February 28 in common years.
+- Days between: counts days from the start date to the end date without counting the start date (Monday to Friday = 4); an option includes the end date (+1).
+- Business days: Monday-Friday excluding U.S. federal holidays on their observed dates (optional). Counting excludes the start date and includes the end date (Monday to the next Monday = 5); adding starts on the next business day.
+- U.S. federal holidays: the 11 legal public holidays in 5 U.S.C. 6103, computed by rule for any year from 1971, with U.S. Office of Personnel Management (OPM) observed-date rules: a Saturday holiday is observed the Friday before, a Sunday holiday the Monday after. Juneteenth from 2021, Martin Luther King Jr. Day from 1986. Inauguration Day and one-time executive-order days off are not included.
+- Time zones: IANA Time Zone Database (tzdb) as built into the visitor's browser via Intl.DateTimeFormat. Ambiguous fall-back times use the first occurrence.
+
+## Tools
+
+- [Days between two dates](https://dayspan.pages.dev/days-between/): total days, weeks and days, years-months-days, with an include-end-date option.
+- [Add or subtract from a date](https://dayspan.pages.dev/add-subtract/): the date a number of years, months, weeks, and days before or after a date, with month-end handling.
+- [Age calculator](https://dayspan.pages.dev/age/): exact age in years, months, and days on any date, totals lived, and the next birthday.
+- [Business days calculator](https://dayspan.pages.dev/business-days/): count workdays between two dates or add/subtract workdays, skipping weekends and U.S. federal holidays.
+- [U.S. federal holidays by year](https://dayspan.pages.dev/federal-holidays/): actual and observed dates of every federal holiday for any year from 1971.
+- [Countdown timer](https://dayspan.pages.dev/countdown/): live countdown to a date and time in any IANA time zone, shareable by link.
+
+## Reference
+
+- [U.S. federal holidays in 2027](https://dayspan.pages.dev/federal-holidays/2027/): 2027 list; Juneteenth observed Fri June 18, Independence Day Mon July 5, Christmas Fri Dec 24, and New Year's Day 2028 observed Fri Dec 31, 2027.
+- [About and methods](https://dayspan.pages.dev/about/): full explanation of each calculation, privacy, and sources.

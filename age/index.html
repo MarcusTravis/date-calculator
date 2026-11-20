@@ -20,12 +20,106 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dayspan – free, ad-free date, age and business-day calculator">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Age Calculator – Exact Age in Years, Months & Days">
+<meta name="twitter:description" content="Calculate exact age in years, months, and days, total months, weeks, and days lived, and the countdown to the next birthday. Clear leap-day rule. No ads.">
 <meta name="twitter:image" content="https://dayspan.pages.dev/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/datecore.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/pages/age.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Age Calculator",
+   "url": "https://dayspan.pages.dev/age/",
+   "description": "Calculate exact age in years, months, and days, total months, weeks, and days lived, and the countdown to the next birthday. Clear leap-day rule. No ads.",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any (runs in a web browser)",
+   "browserRequirements": "Requires JavaScript",
+   "inLanguage": "en-US",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://dayspan.pages.dev/#website",
+    "name": "Date Calculator",
+    "url": "https://dayspan.pages.dev/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://dayspan.pages.dev/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Age calculator",
+     "item": "https://dayspan.pages.dev/age/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "url": "https://dayspan.pages.dev/age/",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How is exact age calculated?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The calculator counts full years since birth, then full months after the last birthday, then the days left over. Someone born on March 10 gains a month on each 10th and a year on each March 10."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How are February 29 birthdays handled?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In years without a February 29, this calculator treats February 28 as the birthday. Someone born on February 29, 2000 turns 26 on February 28, 2026. Some rules use March 1 instead, which is never more than one day later."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I find someone’s age on a past or future date?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Change the “Age on” date, which starts as today, to any date on or after the date of birth."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How are the totals in months, weeks, days, and hours counted?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Total days are the exact number of calendar days since birth. Weeks are those days divided by seven, and total hours assume 24-hour days, so they are approximate because the time of birth is not known."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is my date of birth sent anywhere?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The calculation runs in your browser. The dates are kept in the page address so a result can be bookmarked or shared, so anyone you send that link to will see them."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,6 +133,7 @@
 <div class="wrap">
 <h1>Age calculator</h1>
 <p class="lede">Enter a date of birth. Change the second date to see the age on any other day.</p>
+<p class="answer">Age is the number of full years since the date of birth, then the full months since the last birthday, then the remaining days. It is worked out on calendar dates, so it matches how people normally count birthdays. For a February 29 birthday, February 28 is used in years without a leap day.</p>
 <form id="form" class="card" novalidate>
 <div class="row">
 <div class="field"><label for="dob">Date of birth</label><input type="date" id="dob" name="dob" required min="0001-01-01" max="9999-12-31"></div>
@@ -68,6 +163,23 @@
 <p>In years without a February 29, this calculator treats February 28 as the birthday, so someone born on February 29, 2000 turns 26 on February 28, 2026. Some laws and organizations use March 1 instead. If that matters for your purpose, check the rule that applies to you; the difference is never more than one day.</p>
 <p>Total hours assume 24-hour days and are approximate, since the hour of birth is not known.</p>
 </section>
+<section class="prose faq" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>How is exact age calculated?</h3>
+<p>The calculator counts full years since birth, then full months after the last birthday, then the days left over. Someone born on March 10 gains a month on each 10th and a year on each March 10.</p>
+<h3>How are February 29 birthdays handled?</h3>
+<p>In years without a February 29, this calculator treats February 28 as the birthday. Someone born on February 29, 2000 turns 26 on February 28, 2026. Some rules use March 1 instead, which is never more than one day later.</p>
+<h3>Can I find someone’s age on a past or future date?</h3>
+<p>Yes. Change the “Age on” date, which starts as today, to any date on or after the date of birth.</p>
+<h3>How are the totals in months, weeks, days, and hours counted?</h3>
+<p>Total days are the exact number of calendar days since birth. Weeks are those days divided by seven, and total hours assume 24-hour days, so they are approximate because the time of birth is not known.</p>
+<h3>Is my date of birth sent anywhere?</h3>
+<p>No. The calculation runs in your browser. The dates are kept in the page address so a result can be bookmarked or shared, so anyone you send that link to will see them.</p>
+</section>
+<nav class="related" aria-label="Related tools">
+<h2>Related tools</h2>
+<ul><li><a href="/days-between/">Days between dates</a> – Count the days, weeks, and months between two dates.</li><li><a href="/add-subtract/">Add or subtract time</a> – Find the date a number of days, weeks, months, or years away.</li><li><a href="/countdown/">Countdown timer</a> – A live, shareable countdown to any date and time in any time zone.</li></ul>
+</nav>
 </div>
 </main>
 <footer class="site-footer">

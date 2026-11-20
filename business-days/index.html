@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Business Days Calculator – Count or Add Workdays, Skip Federal Holidays</title>
+<title>Business Days Calculator – Skip Weekends & Federal Holidays</title>
 <meta name="description" content="Count business days between two dates or add and subtract workdays, skipping weekends and, optionally, U.S. federal holidays on their observed dates.">
 <link rel="canonical" href="https://dayspan.pages.dev/business-days/">
 <meta name="google-site-verification" content="DBsd4dRo6CszvxQNH2xXlYTnwq2I4v30uIsV_nwwEc8">
@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#12161b" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Date Calculator">
-<meta property="og:title" content="Business Days Calculator – Count or Add Workdays, Skip Federal Holidays">
+<meta property="og:title" content="Business Days Calculator – Skip Weekends & Federal Holidays">
 <meta property="og:description" content="Count business days between two dates or add and subtract workdays, skipping weekends and, optionally, U.S. federal holidays on their observed dates.">
 <meta property="og:url" content="https://dayspan.pages.dev/business-days/">
 <meta property="og:image" content="https://dayspan.pages.dev/og.png">
@@ -20,12 +20,114 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dayspan – free, ad-free date, age and business-day calculator">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Business Days Calculator – Skip Weekends & Federal Holidays">
+<meta name="twitter:description" content="Count business days between two dates or add and subtract workdays, skipping weekends and, optionally, U.S. federal holidays on their observed dates.">
 <meta name="twitter:image" content="https://dayspan.pages.dev/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/datecore.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/pages/business-days.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Business Days Calculator",
+   "url": "https://dayspan.pages.dev/business-days/",
+   "description": "Count business days between two dates or add and subtract workdays, skipping weekends and, optionally, U.S. federal holidays on their observed dates.",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any (runs in a web browser)",
+   "browserRequirements": "Requires JavaScript",
+   "inLanguage": "en-US",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://dayspan.pages.dev/#website",
+    "name": "Date Calculator",
+    "url": "https://dayspan.pages.dev/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://dayspan.pages.dev/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Business days calculator",
+     "item": "https://dayspan.pages.dev/business-days/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "url": "https://dayspan.pages.dev/business-days/",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is the start date counted?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not by default. A count includes the end date and leaves out the start date, so Monday to the following Monday is 5 business days. Tick “Count the start date too” to count both ends, which makes it 6."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which holidays are skipped?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The eleven U.S. federal holidays set by 5 U.S.C. 6103: New Year’s Day, Martin Luther King Jr. Day, Washington’s Birthday, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving Day, and Christmas Day. Untick the holiday box to count weekdays only."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What if a holiday falls on a weekend?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The observed day is skipped instead: a Saturday holiday is observed on the Friday before and a Sunday holiday on the Monday after. For example, July 4, 2026 is a Saturday, so Friday, July 3 is not a business day."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What date is 10 business days from today?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Choose “Add or subtract business days,” leave the start date as today, and enter 10. Counting begins with the next business day, so 1 business day after a Friday is the following Monday. Use a negative number to count back."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does this match bank or stock market holidays?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not exactly. Banks, stock exchanges, states, and employers set their own holiday calendars, which can include or move days differently from the federal list. Company-specific closings and one-off days off are not included."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which years are supported?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Dates from 1971 onward, when the current Monday-holiday rules began. Juneteenth is counted from 2021 and Martin Luther King Jr. Day from 1986, matching when each became a federal holiday."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,6 +141,7 @@
 <div class="wrap">
 <h1>Business days calculator</h1>
 <p class="lede">Weekends are always skipped. U.S. federal holidays are skipped on their observed dates unless you turn that off.</p>
+<p class="answer">Business days are weekdays, Monday through Friday, that are not U.S. federal holidays. When counting, the start date is left out and the end date is included, so Monday to the following Monday is 5 business days. When adding, counting begins on the next business day. Federal holidays are skipped on their observed dates; you can turn that off.</p>
 <form id="form" class="card" novalidate>
 <fieldset class="field"><legend>What do you want to do?</legend>
 <div class="segmented">
@@ -71,6 +174,25 @@
 <li>Bank, stock market, state, and company holidays can differ from the federal list. Turn holidays off to count weekdays only.</li>
 </ul>
 </section>
+<section class="prose faq" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Is the start date counted?</h3>
+<p>Not by default. A count includes the end date and leaves out the start date, so Monday to the following Monday is 5 business days. Tick “Count the start date too” to count both ends, which makes it 6.</p>
+<h3>Which holidays are skipped?</h3>
+<p>The eleven U.S. federal holidays set by 5 U.S.C. 6103: New Year’s Day, Martin Luther King Jr. Day, Washington’s Birthday, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving Day, and Christmas Day. Untick the holiday box to count weekdays only.</p>
+<h3>What if a holiday falls on a weekend?</h3>
+<p>The observed day is skipped instead: a Saturday holiday is observed on the Friday before and a Sunday holiday on the Monday after. For example, July 4, 2026 is a Saturday, so Friday, July 3 is not a business day.</p>
+<h3>What date is 10 business days from today?</h3>
+<p>Choose “Add or subtract business days,” leave the start date as today, and enter 10. Counting begins with the next business day, so 1 business day after a Friday is the following Monday. Use a negative number to count back.</p>
+<h3>Does this match bank or stock market holidays?</h3>
+<p>Not exactly. Banks, stock exchanges, states, and employers set their own holiday calendars, which can include or move days differently from the federal list. Company-specific closings and one-off days off are not included.</p>
+<h3>Which years are supported?</h3>
+<p>Dates from 1971 onward, when the current Monday-holiday rules began. Juneteenth is counted from 2021 and Martin Luther King Jr. Day from 1986, matching when each became a federal holiday.</p>
+</section>
+<nav class="related" aria-label="Related tools">
+<h2>Related tools</h2>
+<ul><li><a href="/federal-holidays/">U.S. federal holidays by year</a> – Actual and observed dates for any year from 1971.</li><li><a href="/federal-holidays/2027/">U.S. federal holidays in 2027</a> – The 2027 list, including the three weekend holidays and their days off.</li><li><a href="/days-between/">Days between dates</a> – Count the days, weeks, and months between two dates.</li><li><a href="/add-subtract/">Add or subtract time</a> – Find the date a number of days, weeks, months, or years away.</li></ul>
+</nav>
 </div>
 </main>
 <footer class="site-footer">

@@ -7,3 +7,9 @@
 
 /tests/*
   X-Robots-Tag: noindex
+
+/og.png
+  Cache-Control: public, max-age=86400
+
+/favicon.svg
+  Cache-Control: public, max-age=86400

@@ -20,12 +20,114 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dayspan – free, ad-free date, age and business-day calculator">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="U.S. Federal Holidays by Year – Actual and Observed Dates">
+<meta name="twitter:description" content="List of U.S. federal holidays for any year from 1971 on, with each actual date and the observed weekday off when a holiday falls on a weekend.">
 <meta name="twitter:image" content="https://dayspan.pages.dev/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/datecore.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/pages/federal-holidays.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "U.S. Federal Holidays Calculator",
+   "url": "https://dayspan.pages.dev/federal-holidays/",
+   "description": "List of U.S. federal holidays for any year from 1971 on, with each actual date and the observed weekday off when a holiday falls on a weekend.",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any (runs in a web browser)",
+   "browserRequirements": "Requires JavaScript",
+   "inLanguage": "en-US",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://dayspan.pages.dev/#website",
+    "name": "Date Calculator",
+    "url": "https://dayspan.pages.dev/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://dayspan.pages.dev/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Federal holidays",
+     "item": "https://dayspan.pages.dev/federal-holidays/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "url": "https://dayspan.pages.dev/federal-holidays/",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How many federal holidays are there?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Eleven since 2021, when Juneteenth National Independence Day was added. Before that there were ten, and before 1986 there were nine, since Martin Luther King Jr. Day was first observed in 1986."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What happens when a federal holiday falls on a weekend?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Following OPM’s rules for federal employees, a Saturday holiday is observed on the Friday before and a Sunday holiday on the Monday after."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why is New Year’s Day sometimes observed in December?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "When January 1 is a Saturday, the observed holiday is Friday, December 31 of the year before. That is why a year can list a New Year’s observance from the following year in its notes."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "When is Juneteenth observed?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Juneteenth is June 19 and has been a federal holiday since 2021. When June 19 is a Saturday it is observed on Friday, June 18; when it is a Sunday, on Monday, June 20."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Are Christmas Eve and the day after Thanksgiving federal holidays?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. They are not in the law. A president sometimes gives federal employees one of those days off by executive order, but such one-time days are not included here."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Inauguration Day a federal holiday?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Only for some federal employees in the Washington, D.C. area, on January 20 every four years, so it is not included in this list."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,6 +141,7 @@
 <div class="wrap">
 <h1>U.S. federal holidays</h1>
 <p class="lede">Choose a year to see each federal holiday, the date it falls on, and the day it is observed.</p>
+<p class="answer">There are eleven U.S. federal holidays, set by 5 U.S.C. 6103. Five have fixed dates and six fall on a set weekday. When a holiday lands on a Saturday, federal employees get the Friday before off; when it lands on a Sunday, they get the Monday after. Choose any year from 1971 on to see both dates.</p>
 <form id="form" class="card" novalidate>
 <div class="row">
 <div class="field"><label for="year">Year</label><input type="number" id="year" name="year" min="1971" max="9998" step="1" inputmode="numeric"></div>
@@ -64,6 +167,25 @@
 <p>Inauguration Day, which is a holiday only for some federal employees in the Washington, D.C. area every four years, is not included.</p>
 <p>A fixed list for one year is also here: <a href="/federal-holidays/2027/">U.S. federal holidays in 2027</a>, with each actual date and the observed weekday off.</p>
 </section>
+<section class="prose faq" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>How many federal holidays are there?</h3>
+<p>Eleven since 2021, when Juneteenth National Independence Day was added. Before that there were ten, and before 1986 there were nine, since Martin Luther King Jr. Day was first observed in 1986.</p>
+<h3>What happens when a federal holiday falls on a weekend?</h3>
+<p>Following OPM’s rules for federal employees, a Saturday holiday is observed on the Friday before and a Sunday holiday on the Monday after.</p>
+<h3>Why is New Year’s Day sometimes observed in December?</h3>
+<p>When January 1 is a Saturday, the observed holiday is Friday, December 31 of the year before. That is why a year can list a New Year’s observance from the following year in its notes.</p>
+<h3>When is Juneteenth observed?</h3>
+<p>Juneteenth is June 19 and has been a federal holiday since 2021. When June 19 is a Saturday it is observed on Friday, June 18; when it is a Sunday, on Monday, June 20.</p>
+<h3>Are Christmas Eve and the day after Thanksgiving federal holidays?</h3>
+<p>No. They are not in the law. A president sometimes gives federal employees one of those days off by executive order, but such one-time days are not included here.</p>
+<h3>Is Inauguration Day a federal holiday?</h3>
+<p>Only for some federal employees in the Washington, D.C. area, on January 20 every four years, so it is not included in this list.</p>
+</section>
+<nav class="related" aria-label="Related tools">
+<h2>Related tools</h2>
+<ul><li><a href="/federal-holidays/2027/">U.S. federal holidays in 2027</a> – The 2027 list, including the three weekend holidays and their days off.</li><li><a href="/business-days/">Business days calculator</a> – Count or add workdays, skipping weekends and federal holidays.</li><li><a href="/countdown/">Countdown timer</a> – A live, shareable countdown to any date and time in any time zone.</li></ul>
+</nav>
 </div>
 </main>
 <footer class="site-footer">

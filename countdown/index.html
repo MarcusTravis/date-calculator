@@ -20,12 +20,106 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dayspan – free, ad-free date, age and business-day calculator">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Countdown Timer to Any Date and Time, in Any Time Zone">
+<meta name="twitter:description" content="Live countdown in days, hours, minutes, and seconds to any date and time in any time zone. Daylight-saving aware and shareable by link. Free, no ads.">
 <meta name="twitter:image" content="https://dayspan.pages.dev/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/datecore.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/pages/countdown.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Countdown Timer",
+   "url": "https://dayspan.pages.dev/countdown/",
+   "description": "Live countdown in days, hours, minutes, and seconds to any date and time in any time zone. Daylight-saving aware and shareable by link. Free, no ads.",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any (runs in a web browser)",
+   "browserRequirements": "Requires JavaScript",
+   "inLanguage": "en-US",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://dayspan.pages.dev/#website",
+    "name": "Date Calculator",
+    "url": "https://dayspan.pages.dev/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://dayspan.pages.dev/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Countdown timer",
+     "item": "https://dayspan.pages.dev/countdown/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "url": "https://dayspan.pages.dev/countdown/",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Which time zone does the countdown use?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The one you choose. It starts as your own zone, and any IANA zone your browser knows, such as America/New_York or Europe/London, can be picked. Someone opening your link sees the same moment converted to their own clock."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does it handle daylight saving time?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. The target is converted to one exact moment using the browser’s time zone data, so a countdown that crosses a clock change stays exact. A time that happens twice when clocks fall back uses the first one, and a time skipped when clocks spring forward uses the moment the clocks jump past it."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I share a countdown?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Use “Copy link to this result.” The link holds the event name, date, time, and time zone, and nothing is stored on a server."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What happens after the moment passes?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The display switches to counting the time since the moment."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why might the countdown be a little off?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It follows your device clock. If that clock is wrong, the countdown is off by the same amount."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,6 +133,7 @@
 <div class="wrap">
 <h1>Countdown to a date and time</h1>
 <p class="lede">Set a moment, pick the time zone it happens in, and share the link. Anyone who opens it sees the same countdown, converted to their own clock.</p>
+<p class="answer">Pick a date, a time, and the time zone where the moment happens, and the page counts down in days, hours, minutes, and seconds. Time zones and daylight-saving changes come from the IANA time zone database built into your browser, so the countdown is exact for anyone who opens the shared link.</p>
 <form id="form" class="card" novalidate>
 <div class="row">
 <div class="field"><label for="title">Event name (optional)</label><input type="text" id="title" name="title" maxlength="80" autocomplete="off" placeholder="e.g. Launch day"></div>
@@ -72,6 +167,23 @@
 <p>If you pick a time that happens twice because clocks fall back, the first occurrence is used. If you pick a time that is skipped when clocks spring forward, the countdown uses the moment the clocks jump past it, and a note says so.</p>
 <p>The countdown follows your device clock. If that clock is wrong, the countdown will be off by the same amount.</p>
 </section>
+<section class="prose faq" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Which time zone does the countdown use?</h3>
+<p>The one you choose. It starts as your own zone, and any IANA zone your browser knows, such as America/New_York or Europe/London, can be picked. Someone opening your link sees the same moment converted to their own clock.</p>
+<h3>Does it handle daylight saving time?</h3>
+<p>Yes. The target is converted to one exact moment using the browser’s time zone data, so a countdown that crosses a clock change stays exact. A time that happens twice when clocks fall back uses the first one, and a time skipped when clocks spring forward uses the moment the clocks jump past it.</p>
+<h3>How do I share a countdown?</h3>
+<p>Use “Copy link to this result.” The link holds the event name, date, time, and time zone, and nothing is stored on a server.</p>
+<h3>What happens after the moment passes?</h3>
+<p>The display switches to counting the time since the moment.</p>
+<h3>Why might the countdown be a little off?</h3>
+<p>It follows your device clock. If that clock is wrong, the countdown is off by the same amount.</p>
+</section>
+<nav class="related" aria-label="Related tools">
+<h2>Related tools</h2>
+<ul><li><a href="/days-between/">Days between dates</a> – Count the days, weeks, and months between two dates.</li><li><a href="/add-subtract/">Add or subtract time</a> – Find the date a number of days, weeks, months, or years away.</li><li><a href="/federal-holidays/">U.S. federal holidays by year</a> – Actual and observed dates for any year from 1971.</li></ul>
+</nav>
 </div>
 </main>
 <footer class="site-footer">

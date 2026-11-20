@@ -129,3 +129,11 @@ code { font-family: var(--mono); font-size: .9em; background: var(--accent-soft)
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media print { .site-header, .site-footer, .actions { display: none; } }
+
+/* Short answer, FAQ, and related links */
+.answer { max-width: 70ch; margin: 0 0 1.4rem; padding: .8rem 1rem; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); }
+.faq h3 { font-size: 1.02rem; margin: 1.3rem 0 .3rem; }
+.faq p { margin: 0 0 .6rem; }
+.related { max-width: 70ch; margin-top: 2rem; }
+.related ul { padding-left: 1.2rem; }
+.related li { margin: .35rem 0; }

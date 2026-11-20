@@ -295,5 +295,52 @@ test('every page has the footer, a title, a description, and the analytics beaco
   });
 });
 
+function decodeHtml(t) {
+  return t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+}
+test('JSON-LD parses, and FAQ structured data matches the visible FAQ', function () {
+  var withLd = 0;
+  htmlFiles(root).forEach(function (f) {
+    var html = fs.readFileSync(f, 'utf8'), rel = path.relative(root, f);
+    var re = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, m, faqs = [];
+    while ((m = re.exec(html))) {
+      var data = JSON.parse(m[1]); withLd++;
+      (data['@graph'] || [data]).forEach(function (n) {
+        if (n['@type'] === 'FAQPage') faqs = faqs.concat(n.mainEntity);
+        if (n.aggregateRating || n.review) throw new Error('ratings/reviews are not allowed in ' + rel);
+        if (n['@type'] === 'WebApplication' && (n.offers.price !== '0' || n.isAccessibleForFree !== true)) throw new Error('offer must be free in ' + rel);
+      });
+    }
+    var sec = /<section class="prose faq" id="faq">([\s\S]*?)<\/section>/.exec(html);
+    var visible = [];
+    if (sec) {
+      var qa = /<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g, q;
+      while ((q = qa.exec(sec[1]))) visible.push([decodeHtml(q[1]), decodeHtml(q[2])]);
+    }
+    eq(faqs.map(function (e) { return [e.name, e.acceptedAnswer.text]; }), visible, 'FAQ mismatch in ' + rel);
+  });
+  if (withLd < 9) throw new Error('expected JSON-LD on at least 9 pages, found ' + withLd);
+});
+test('robots.txt allows crawlers and lists the sitemap; llms.txt and sitemap cover every indexable page', function () {
+  var robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
+  ['*', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'PerplexityBot', 'Google-Extended', 'Bingbot'].forEach(function (ua) {
+    if (robots.indexOf('User-agent: ' + ua + '\nAllow: /') === -1) throw new Error('robots.txt missing allow for ' + ua);
+  });
+  if (/Disallow:\s*\/\s*$/m.test(robots)) throw new Error('robots.txt disallows the site');
+  if (robots.indexOf('Sitemap: https://dayspan.pages.dev/sitemap.xml') === -1) throw new Error('sitemap line missing');
+  var sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
+  var llms = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');
+  if (!/^# .+\n\n> .+/.test(llms)) throw new Error('llms.txt must start with an H1 and a blockquote summary');
+  htmlFiles(root).forEach(function (f) {
+    var html = fs.readFileSync(f, 'utf8');
+    if (/<meta name="robots" content="noindex">/.test(html)) return;
+    var can = /<link rel="canonical" href="([^"]+)">/.exec(html);
+    if (!can) throw new Error('canonical missing in ' + path.relative(root, f));
+    if (sitemap.indexOf('<loc>' + can[1] + '</loc>') === -1) throw new Error('sitemap missing ' + can[1]);
+    if (can[1] !== 'https://dayspan.pages.dev/' && llms.indexOf('(' + can[1] + ')') === -1) throw new Error('llms.txt missing ' + can[1]);
+    if ((html.match(/<h1[\s>]/g) || []).length !== 1) throw new Error('expected one h1 in ' + path.relative(root, f));
+  });
+});
+
 console.log('\n' + passed + ' passed, ' + failed + ' failed');
 process.exit(failed ? 1 : 0);

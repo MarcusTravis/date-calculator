@@ -20,12 +20,106 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dayspan – free, ad-free date, age and business-day calculator">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Add or Subtract Days, Weeks, Months & Years From a Date">
+<meta name="twitter:description" content="Find the date a number of days, weeks, months, or years before or after any date. Handles leap years and month-end dates correctly. Free and ad-free.">
 <meta name="twitter:image" content="https://dayspan.pages.dev/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/datecore.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/pages/add-subtract.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Add or Subtract From a Date Calculator",
+   "url": "https://dayspan.pages.dev/add-subtract/",
+   "description": "Find the date a number of days, weeks, months, or years before or after any date. Handles leap years and month-end dates correctly. Free and ad-free.",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any (runs in a web browser)",
+   "browserRequirements": "Requires JavaScript",
+   "inLanguage": "en-US",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://dayspan.pages.dev/#website",
+    "name": "Date Calculator",
+    "url": "https://dayspan.pages.dev/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://dayspan.pages.dev/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Add or subtract time",
+     "item": "https://dayspan.pages.dev/add-subtract/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "url": "https://dayspan.pages.dev/add-subtract/",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is January 31 plus one month?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "February 28 in a common year and February 29 in a leap year. When the target month does not have the starting day number, the result moves back to the last day of that month."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "In what order are years, months, weeks, and days added?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Years and months are applied first, as one combined number of months, and then weeks and days are added as calendar days. Subtracting uses the same order."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What happens when I add a year to February 29?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The result is February 28 of the next year, because a year is treated as twelve months. Adding four years to February 29, 2024 gives February 29, 2028."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I find the date 90 days from today?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Leave the start date set to today, choose Add, and enter 90 in the Days box. The result shows the new date, its ISO form, and how many calendar days away it is."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What range of dates and amounts is supported?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Start dates and results can be anywhere from year 1 to year 9999, and each amount can be a whole number from 0 to 100,000."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,6 +133,7 @@
 <div class="wrap">
 <h1>Add or subtract from a date</h1>
 <p class="lede">Start from a date, choose a direction, and enter any mix of years, months, weeks, and days.</p>
+<p class="answer">Enter a start date and any mix of years, months, weeks, and days to get the date before or after it. Years and months are applied first, then weeks and days. If the target month is too short for the day, the result is that month’s last day, so January 31 plus one month is February 28, or February 29 in a leap year.</p>
 <form id="form" class="card" novalidate>
 <div class="row">
 <div class="field"><label for="date">Start date</label><input type="date" id="date" name="date" required min="0001-01-01" max="9999-12-31"></div>
@@ -70,6 +165,23 @@
 <p>A year is treated as twelve months, so February 29 plus one year is February 28 of the next year, and plus four years is February 29 again.</p>
 <p>Weeks are exactly seven days. Days are calendar days, so the result is never thrown off by daylight saving time.</p>
 </section>
+<section class="prose faq" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>What is January 31 plus one month?</h3>
+<p>February 28 in a common year and February 29 in a leap year. When the target month does not have the starting day number, the result moves back to the last day of that month.</p>
+<h3>In what order are years, months, weeks, and days added?</h3>
+<p>Years and months are applied first, as one combined number of months, and then weeks and days are added as calendar days. Subtracting uses the same order.</p>
+<h3>What happens when I add a year to February 29?</h3>
+<p>The result is February 28 of the next year, because a year is treated as twelve months. Adding four years to February 29, 2024 gives February 29, 2028.</p>
+<h3>How do I find the date 90 days from today?</h3>
+<p>Leave the start date set to today, choose Add, and enter 90 in the Days box. The result shows the new date, its ISO form, and how many calendar days away it is.</p>
+<h3>What range of dates and amounts is supported?</h3>
+<p>Start dates and results can be anywhere from year 1 to year 9999, and each amount can be a whole number from 0 to 100,000.</p>
+</section>
+<nav class="related" aria-label="Related tools">
+<h2>Related tools</h2>
+<ul><li><a href="/days-between/">Days between dates</a> – Count the days, weeks, and months between two dates.</li><li><a href="/business-days/">Business days calculator</a> – Count or add workdays, skipping weekends and federal holidays.</li><li><a href="/age/">Age calculator</a> – Exact age in years, months, and days, and the next birthday.</li><li><a href="/countdown/">Countdown timer</a> – A live, shareable countdown to any date and time in any time zone.</li></ul>
+</nav>
 </div>
 </main>
 <footer class="site-footer">
